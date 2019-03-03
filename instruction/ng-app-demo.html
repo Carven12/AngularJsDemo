@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/angular.min.js"></script>
+    <title>ng-app-demo</title>
+</head>
+<body>
+    <!-- ng-app指令如果被赋值，则在JS代码中必须要为其声明一个模块，否则代码会报错（未找到对应的模块！） -->
+    <!-- ng-init指令用于变量的初始化，如下将初始化变量firstName的值为John -->
+    <div ng-app="" ng-init="firstName='John'">
+        <p>在输入框中尝试输入：</p>
+        <!-- ng-model指令绑定了 HTML 表单元素到 scope 变量中，如下将input框的值与变量firstName 绑定 -->
+        <p>姓名：<input type="text" ng-model="firstName"></p>
+        <p>你输入的为： {{ firstName }}</p>
+        <!-- ng-bind的作用同AngularJS表达式，绑定 HTML 元素到应用程序数据 -->
+        <p>ng-bind的值为：<label ng-bind="firstName"></label></p>
+    </div>
+</body>
+</html>

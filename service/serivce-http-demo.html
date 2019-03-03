@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+	<style>
+		table, th , td {
+			border: 1px solid grey;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+		/* 奇数行样式 */
+		table tr:nth-child(odd) {
+			background-color: #f1f1f1;
+		}
+		/* 偶数行样式 */
+		table tr:nth-child(even) {
+			background-color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		<table>
+			<tr ng-repeat="x in names | orderBy : 'Country'">
+				<!-- ng-cloak指令防止 -->
+				<td ng-cloak>{{ $index + 1 }}</td>
+				<td ng-cloak>{{ x.Name }}</td>
+				<td ng-cloak>{{ x.Country | uppercase }}</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script>
+	//  1、创建模块
+    var app = angular.module('myApp', []);
+    // 2、创建控制器
+    app.controller('customersCtrl', function($scope, $http) {
+        // 写法一(以下两种方式任意注释掉一个)
+        // 2.1 调用http服务请求json
+        $http({
+	        // 设置请求方式
+            method: 'POST',
+	        // 设置请求参数
+            data: {
+                id: 1
+            },
+	        // 设置请求地址
+            url: '../json/test.json'
+        }).then(
+                function successCallback(response) {
+                    // 请求成功执行代码
+                    $scope.names = response.data.records;
+        }, function errorCallback(response) {
+            // 请求失败执行代码
+        });
+        
+        // 写法二
+        // 1） url: 请求的路径
+		//
+        // 2） 请求发送的数据： json对象 {name:'tony'}     (在后端应该用req.body接收)
+		//
+        // 3）请求配置的参数： json对象 {params: {id:5}}， 这样得到的实际路径就是url?id=5    (在后端应该用req.query接收)
+        $http.get('../json/test.json',{
+            params: {
+                "id":1
+            }
+        }).success(function(data,status,headers,config){
+            // 请求成功时执行的代码
+            $scope.names = data.records;
+        }).error(function(data,status,headers,config){
+            // 请求失败时执行的代码
+        });
+    });
+    
+</script>
+</html>

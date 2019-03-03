@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="">
+	<p>My:</p>
+	<!-- 为第一个check框的值绑定变量all -->
+	<input type="checkbox" ng-model="all"> Check all<br><br>
+	<!-- 以下的check的ng-checked指令与变量all绑定，即以下的CheckBox状态都受第一个框影响 -->
+	<input type="checkbox" ng-checked="all">Volvo<br>
+	<input type="checkbox" ng-checked="all">Ford<br>
+	<input type="checkbox" ng-checked="all">Mercedes
+</body>
+</html>

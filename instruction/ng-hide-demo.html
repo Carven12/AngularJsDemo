@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="">
+	<!-- ng-hide指令为true时，将拥有该指令部分隐藏（DOM其实还是加载的），如下将checkbox的值与myVar变量绑定 -->
+	隐藏 HTML: <input type="checkbox" ng-model="myVar">
+	<div ng-hide="myVar">
+		<h1>Welcome1</h1>
+		<p>Welcome1 to my home.</p>
+	</div>
+	<!-- ng-show指令为true时，将拥有该指令部分显示（DOM其实还是加载的），如下将checkbox的值与myVar变量绑定 -->
+	<div ng-show="myVar">
+		<h1>Welcome2</h1>
+		<p>Welcome2 to my home.</p>
+	</div>
+	<!-- ng-if指令为true时，将拥有该指令部分加载，否则DOM不加载被修饰元素，如下将checkbox的值与myVar变量绑定 -->
+	<div ng-if="myVar">
+		<h1>Welcome3</h1>
+		<p>Welcome3 to my home.</p>
+		<hr>
+	</div>
+</body>
+</html>

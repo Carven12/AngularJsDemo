@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="myApp" >
+	<button ng-click="count = count + 1" ng-init="count=0">OK</button>
+	<p>点击的次数为：{{ count }}</p>
+	<div ng-controller="clickCtrl">
+		<button ng-click="alertMessage()">点我</button>
+	</div>
+</body>
+<script>
+    // 1、创建模块app
+    var app = angular.module('myApp', []);
+    // 2、创建控制器clickCtrl
+    app.controller('clickCtrl', function($scope) {
+        // 2.1 创建作用域变量
+        $scope.firstName = "Hellow";
+        $scope.lastName = "AngularJS!";
+        // 2.2 创建作用域函数，弹出两个字符串的拼接
+        $scope.alertMessage = function() {
+            alert($scope.firstName + " " + $scope.lastName);
+        }
+    });
+</script>
+</html>

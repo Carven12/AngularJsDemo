@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="myApp" ng-controller="optionsCtrl">
+	<!-- ng-repeat 有局限性，选择的值是一个字符串,但repeat可以同时设置option的value和内容，实现分离 -->
+	<select ng-model="selectedSite">
+		<option ng-repeat="x in sites" value="{{x.url}}">{{x.site}}</option>
+	</select>
+	<br>
+	<!-- 使用 ng-options 指令，选择的值是一个对象 -->
+	<select ng-model="selectedSite" ng-options="x for x in sites">
+	</select>
+	<h1>你选择的是: {{selectedSite}}</h1>
+</body>
+<script>
+    // 1、创建模块app
+    var app = angular.module('myApp', []);
+    // 2、创建控制器clickCtrl
+    app.controller('optionsCtrl', function($scope) {
+        // 2.1 创建作用域变量
+        $scope.sites = [
+            {site : "Google", url : "http://www.google.com"},
+            {site : "Runoob", url : "http://www.runoob.com"},
+            {site : "Taobao", url : "http://www.taobao.com"}
+        ];
+    });
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/angular.min.js"></script>
+    <title>Title</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <!-- 重复ng-repeat指令所在标签的所有内容 -->
+    <h1 ng-repeat="x in records">{{x}}</h1>
+    <!-- 重复ng-repeat指令所在标签的所有内容,如下div中包含的label和input都会被重复！ -->
+    <div ng-repeat="x in records">
+        <label>11111</label>
+        <input type="text" ng-model="x">
+    </div>
+</body>
+<script>
+    // 1、创建模块名为app
+    var app = angular.module("myApp", []);
+    // 2、创建控制器myCtrl
+    app.controller("myCtrl", function($scope) {
+        // 3、设置作用域变量records
+        $scope.records = [
+            "菜鸟教程1",
+            "菜鸟教程2",
+            "菜鸟教程3",
+            "菜鸟教程4",
+        ]
+    });
+</script>
+</html>

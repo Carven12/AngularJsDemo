@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<h1 ng-bind="theTime"></h1>
+</body>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $interval) {
+        // 获取当前时间
+        $scope.theTime = new Date().toLocaleTimeString();
+        // 调用$interval服务设置每隔一秒更新一次theTime的值
+        $interval(function () {
+            $scope.theTime = new Date().toLocaleTimeString();
+        }, 1000);
+    });
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="">
+	<!-- 将checkbox的值绑定到flag变量，勾选为true，不勾选则为false -->
+	禁用表单输入域: <input type="checkbox" ng-model="flag">
+	<br>
+	<!-- ng-disablead为true时，以下元素不可用 -->
+	<input type="text" ng-disabled="flag">
+	<input type="radio" ng-disabled="flag" ng-model="flag">
+	<select ng-disabled="flag">
+		<option>Female</option>
+		<option>Male</option>
+	</select>
+</body>
+</html>

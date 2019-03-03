@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="MainCtrl">
+		<h3>{{ originalText }}</h3>
+		<h3>{{ filteredText }}</h3>
+	</div>
+</body>
+<script>
+    angular.module('myApp', [])
+        .controller('MainCtrl', function($scope, $filter) {
+            $scope.originalText = 'hello';
+            // $filter是JS代码中的过滤器，作用同表达式中的过滤器
+            $scope.filteredText = $filter('uppercase')($scope.originalText);
+        });
+</script>
+</html>

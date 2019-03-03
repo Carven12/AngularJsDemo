@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<!-- ng-submit 指令用于在表单提交后执行指定函数,感觉上功能和ng-click类似 -->
+	<form ng-submit="myFunc()">
+		<input type="text">
+		<input type="submit">
+	</form>
+	
+	<p>{{myTxt}}</p>
+</body>
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+        $scope.myTxt = "你还没有点击提交!";
+        // 设置submit事件
+        $scope.myFunc = function () {
+            $scope.myTxt = "你点击了提交!";
+        }
+    });
+</script>
+</html>

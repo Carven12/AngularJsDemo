@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<!-- 为ng-change指令绑定函数myFunc -->
+		<input type="text" ng-change="myFunc()" ng-model="myValue" />
+		<p>The input field has changed {{count}} times.</p>
+	</div>
+</body>
+<script>
+    // 创建模块和控制器
+    angular.module('myApp', [])
+        .controller('myCtrl', ['$scope', function($scope) {
+            $scope.count = 0;
+            // 创建函数myFunc，用于记录input框改变的次数
+            $scope.myFunc = function() {
+                $scope.count++;
+            };
+        }]);
+</script>
+</html>

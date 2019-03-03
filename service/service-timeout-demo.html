@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="clickCtrl">
+		<button ng-click="alertMessage()">点我</button>
+	</div>
+</body>
+<script>
+    // 1、创建模块app
+    var app = angular.module('myApp', []);
+    // 2、创建控制器clickCtrl
+    app.controller('clickCtrl', function($scope, $timeout) {
+        $scope.myHeader = "Hello World!";
+        $scope.alertMessage = function() {
+            $scope.myHeader = "Hello World!";
+            // AngularJS $timeout 服务对应了 JS window.setTimeout 函数，用于设置延迟响应事件
+            $timeout(function () {
+                alert($scope.myHeader);
+            //  设置延迟执行时间2S
+            }, 2000);
+            
+        }
+    });
+</script>
+</html>
