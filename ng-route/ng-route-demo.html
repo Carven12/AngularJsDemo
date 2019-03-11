@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/angular.min.js"></script>
+	<!-- 1、载入了实现路由的 js 文件：angular-route.js -->
+	<script src="../js/angular-route.min.js"></script>
+	<title>Title</title>
+</head>
+<body ng-app='routingDemoApp'>
+
+<h2>AngularJS 路由应用</h2>
+<ul>
+	<!-- 注意 Angular1.6 之前的版本是通过 # + 标记 实现路由, Angular1.6以后版本通过 #！+ 标记实现 -->
+	<li><a href="#/">首页</a></li>
+	<li><a href="#/computers">电脑</a></li>
+	<li><a href="#/printers">打印机</a></li>
+	<li><a href="#/blabla">其他</a></li>
+</ul>
+<!-- 该 div 内的 HTML 内容会根据路由的变化而替换 -->
+<div ng-view></div>
+<script>
+	// 2、创建依赖ngRoute模块的模块app
+    var app = angular.module('routingDemoApp',['ngRoute']);
+    // 3、通过AngularJS 模块的 config 函数配置路由规则,再通过依赖注入将$routeProvider注入到配置函数，调用when函数定义路由规则
+	// $routeProvider的when函数包含两个参数：
+    // 第一个参数是 URL 或者 URL 正则规则。
+    // 第二个参数是路由配置对象。
+    app.config(['$routeProvider', function($routeProvider){
+        $routeProvider
+            .when('/',{template:'这是首页页面'})
+            .when('/computers',{template:'这是电脑分类页面'})
+            .when('/printers',{template:'这是打印机页面'})
+            .otherwise({redirectTo:'/'});
+    }]);
+    /**
+     * 路由配置对象完整参数说明
+     * $routeProvider.when(url,{
+        template:string, //在ng-view中插入简单的html内容
+        templateUrl:string, //在ng-view中插入html模版文件
+        controller:string,function / array, //在当前模版上执行的controller函数
+        controllerAs:string, //为controller指定别名
+        redirectTo:string,function, //重定向的地址
+        resolve:object<key,function> //指定当前controller所依赖的其他模块
+    });
+     */
+    
+</script>
+</body>
+</html>
